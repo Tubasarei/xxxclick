@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<meta charset="utf-8">
+        <title>ｘｘｘclick</title>
+        
+        <style>
+            
+            *{margin: 0px;padding: 0px;}
+            div{
+                border: 1px solid gray;
+                width: 200px;
+                height: 200px;
+                margin: 50px auto;
+                text-align: center;
+                line-height: 200px;
+                transition: all 1s linear;
+                transform:rotate(0deg);
+            }
+        </style>
+	
+	</head>
+	<body>
+        <p>図形をクリックして枠の中に文字をはめ込め</p>
+        <p>文字を追加:<input id="name" type="text"></p>
+        <p><button onclick="myset()">追加</button></p>
+
+        <div id="box1" onclick="btn1();">click</div>　
+        <script>
+            const BOX1=document.getElementById("box1");
+            const NAME=document.getElementById("name");
+
+            const I=0;
+            function myset(){
+                localStorage.setItem(I,NAME.value);
+                I++;
+            }
+
+            function btn1(){
+                let width1 =Math.floor(Math.random()*500+10);
+                BOX1.style.width = width1+"px";
+                let height1 =Math.floor(Math.random()*400+10);
+                BOX1.style.height = height1+"px";
+                let fontSize1 =Math.floor(Math.random()*40);
+                BOX1.style.fontSize = fontSize1+"px";
+                let lineHeight1 =Math.floor(Math.random()*400);
+                BOX1.style.lineHeight = lineHeight1+"px"; 
+                let borderRadius1 =Math.floor(Math.random()*90+10);
+                BOX1.style.borderRadius = borderRadius1+"%";
+                let transform1 =Math.floor(Math.random()*360);
+                BOX1.style.transform = "rotate("+transform1+"deg)"; 
+
+                let I=Math.floor(Math.random()*10);
+                NAME.value = localStorage.getItem(I);
+                document.getElementById("box1").innerHTML=NAME.value;
+                
+            }
+        </script>
+
+	</body>
+</html>
